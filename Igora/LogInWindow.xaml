@@ -1,0 +1,39 @@
+﻿<Window x:Class="Igora.LogInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Igora"
+        mc:Ignorable="d"
+        Title="Игора - авторизация" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="53*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#FF76E383" Panel.ZIndex="-2">
+            <Image Source="/Resources/Logo.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Foreground="Black" FontSize="33" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{StaticResource Company}"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="-2" Background="#FF76E383">
+            <TextBlock Foreground="Black" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Авторизация"></TextBlock>
+        </Grid>
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="273,0,0,0">Логин:</TextBlock>
+        <TextBox x:Name="tbLogin" Grid.Column="1" Grid.Row="3" Height="30" Width="300" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="259,0,0,0">Пароль:</TextBlock>
+        <TextBox  x:Name="tbPassword" Grid.Column="1" Grid.Row="4" Height="30" Width="300" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Visibility="Hidden"></TextBox>
+        <PasswordBox  x:Name="pbPassword" Grid.Column="1" Grid.Row="4" Height="30" Width="300" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" BorderBrush="#FF76E383" SelectionBrush="#FF498C51"></PasswordBox>
+        <CheckBox x:Name="ShowPass" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF498C51" Margin="5,0,0,5" BorderBrush="#FF498C51" Checked="ShowPass_Checked" Unchecked="ShowPass_Unchecked">Показать пароль</CheckBox>
+        <Button x:Name="btnLogIn" Grid.Row="5" Height="30" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16,20,0,0" Grid.Column="1" Click="btnLogIn_Click">Войти</Button>
+    </Grid>
+</Window>

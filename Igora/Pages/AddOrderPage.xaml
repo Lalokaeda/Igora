@@ -1,0 +1,140 @@
+﻿<Page x:Class="Igora.Pages.AddOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Igora.Pages"
+      xmlns:byteScout="clr-namespace:Bytescout.BarCode.WPF;assembly=Bytescout.BarCode.WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Игора - добавление нового заказа">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF76E383" Grid.ColumnSpan="2" Panel.ZIndex="-2">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18">Новый заказ</TextBlock>
+        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <TextBlock x:Name="tbCreaeteDate" Margin="10" Height="30" Width="300" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Номер заказа:</TextBlock>
+                        <TextBox x:Name="tbOrderNum" Margin="10" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <Button x:Name="btnBarcode" Click="btnBarcode_Click" Content="Создать штрихкод"/>
+                    </StackPanel>
+                    <Grid x:Name="barCodeLine" Visibility="Collapsed" Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <byteScout:BarcodeControl Visibility="Collapsed" Margin="2" x:Name="Barcode" Height="200" Width="200" HorizontalAlignment="Center" Value="{Binding Barcode.Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Symbology="{Binding Barcode.Symbology}"/>
+                    </StackPanel>
+                    <Grid Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <!--<StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Дата создания заказа:</TextBlock>
+                        <TextBox Margin="10" Height="30" Width="300" Text="{Binding CreateDate}" />
+                    </StackPanel>-->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Клиент:</TextBlock>
+                        <ComboBox Margin="10" Name="cbClients" SelectedItem="{Binding Client}" DisplayMemberPath="ShortName"></ComboBox>
+                        <Image Height="30" Width="30" Margin="10" Name="btnAddClient" Source="/Resources/Добавить.png" MouseLeftButtonDown="btnAddClient_Click" Cursor="Hand"/>
+                    </StackPanel>
+                    <Grid Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Услуга:</TextBlock>
+                        <StackPanel Orientation="Vertical" x:Name="stackPanelServices">
+                            <ComboBox Margin="10" x:Name="cbServices" DisplayMemberPath="Name" SelectionChanged="cbServices_SelectionChanged" ></ComboBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom">
+                            <Button x:Name="btnDelService" Height="30" Width="30" Content="-" Visibility="Collapsed" Click="btnDelService_Click"/>
+                            <Image x:Name="btnAddService" Height="30" Width="30" Source="/Resources/Добавить.png" Visibility="Collapsed" MouseLeftButtonDown="btnAddService_Click" VerticalAlignment="Bottom" Margin="10" Cursor="Hand"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Статус:</TextBlock>
+                        <ComboBox x:Name="cbStatus" IsEnabled="False" Margin="10" SelectedItem="{Binding Status}" DisplayMemberPath="Name"></ComboBox>
+                    </StackPanel>
+                    <Grid Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Дата закрытия заказа:</TextBlock>
+                        <DatePicker Margin="10" Height="30" Width="300" SelectedDate="{Binding CloseDate}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Время проката:</TextBlock>
+                        <TextBox Margin="10" Text="{Binding HoursOfRent}" x:Name="TimeOfRent"></TextBox>
+                    </StackPanel>
+                    <Grid Height="2">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF76E383" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FF76E383" Offset="0.478"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Width="100" Margin="10" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" >Стоимость:</TextBlock>
+                        <TextBox Margin="10" x:Name="tbPrice" IsEnabled="False" Text="{Binding Price}"></TextBox>
+                        <Button x:Name="btnCalculate" Click="btnCalculate_Click">Рассчитать стоимость</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <Button x:Name="btnSaveNewOrder" Grid.Column="1" Grid.Row="2" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Click="btnSaveNewOrder_Click" IsEnabled="False">Сохранить</Button>
+        <Button x:Name="btnCancelAddOrder" Grid.Column="0" Grid.Row="2" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnCancelAddOrder_Click">Отменить</Button>
+    </Grid>
+</Page>
