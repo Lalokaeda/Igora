@@ -31,8 +31,12 @@ namespace Igora.Pages
                 _currentOrder = selectedOrder;
             else
             {
+                List<Order> orders= new List<Order>();
+                orders = IgoraEntities.GetContext().Orders.ToList();
+                int lastOrderId = orders.LastOrDefault().Id;
                 _currentOrder.Status = IgoraEntities.GetContext().Statuses.Where(p => p.Name == "Новая").FirstOrDefault();
                 _currentOrder.Staff = staff;
+                _currentOrder.Id= lastOrderId+1;
             }
             InitializeComponent();
             UpdateData();

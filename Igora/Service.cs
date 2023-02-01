@@ -44,5 +44,44 @@ namespace Igora
                 }
             }
         }
+
+        private int? _inStock;
+        private int? _outStock;
+
+        public int? InStockInt
+        {
+            get 
+            {
+                if (Equipment == null)
+                    return null;
+                else
+                {
+                    _inStock = (Equipment.Qty - Orders.ToList().Where(p => p.StatusId != 3).Count());
+                    return _inStock;
+                }
+            }
+            set
+            {
+                _inStock= value;
+            }
+        }
+
+        public int? OutStock
+        {
+            get
+            {
+                if (Equipment == null)
+                    return null;
+                else
+                {
+                    _outStock = (Equipment.Qty - _inStock);
+                    return _outStock;
+                }
+            }
+            set
+            {
+                _outStock = value;
+            }
+        }
     }
 }

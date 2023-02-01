@@ -29,21 +29,23 @@ namespace Igora.Pages
             _currentStaff = staff;
             InitializeComponent();
             DataContext= _currentStaff;
-            if (staff.Role.Equals(IgoraEntities.GetContext().Roles.Where(p => p.Name == "Администратор")))
+            if (staff.Role.Name.Equals( "Администратор"))
             {
                 btnCloseOrder.Visibility = Visibility.Collapsed;
             }
-            if (staff.Role.Equals(IgoraEntities.GetContext().Roles.Where(p => p.Name == "Старший смены")))
+            if (staff.Role.Name.Equals( "Старший смены"))
             {
                 btnLoginStory.Visibility = Visibility.Collapsed;
                 btnReports.Visibility = Visibility.Collapsed;
+                btnConsumableData.Visibility= Visibility.Collapsed;
             }
-            if (staff.Role.Equals(IgoraEntities.GetContext().Roles.Where(p => p.Name == "Продавец")))
-            {
-                btnLoginStory.Visibility = Visibility.Collapsed;
-                btnReports.Visibility = Visibility.Collapsed;
-                btnCloseOrder.Visibility = Visibility.Collapsed;
-            }
+            //if (staff.Role.Name.Equals("Продавец"))
+            //{
+            //    btnLoginStory.Visibility = Visibility.Collapsed;
+            //    btnReports.Visibility = Visibility.Collapsed;
+            //    btnCloseOrder.Visibility = Visibility.Collapsed;
+            //    btnConsumableData.Visibility = Visibility.Collapsed;
+            //}
         }
 
         public ProfilePage()
@@ -86,7 +88,7 @@ namespace Igora.Pages
 
         private void btnReports_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new ReportsPage());
         }
 
         private void btnLoginStory_Click(object sender, RoutedEventArgs e)
@@ -96,7 +98,7 @@ namespace Igora.Pages
 
         private void btnConsumableData_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new ConsumableDataPage());
         }
     }
 }

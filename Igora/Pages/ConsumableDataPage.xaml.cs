@@ -24,5 +24,25 @@ namespace Igora.Pages
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                try
+                {
+                    IgoraEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                }
+                catch { }
+                var consData = IgoraEntities.GetContext().Services.ToList();
+                dgridConsData.ItemsSource = consData;
+            }
+          
+        }
     }
 }

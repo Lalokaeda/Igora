@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="50e0daffedf24503b6c3003c9fae7149" Name="Diagram1">
+      <Diagram DiagramId="50e0daffedf24503b6c3003c9fae7149" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="IgoraModel.Client" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IgoraModel.Order" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IgoraModel.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IgoraModel.Service" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IgoraModel.Service" Width="1.5" PointX="12.125" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IgoraModel.Staff" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="IgoraModel.Status" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IgoraModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
@@ -17,8 +17,8 @@
         <AssociationConnector Association="IgoraModel.FK_Orders_Statuses" ManuallyRouted="false" />
         <AssociationConnector Association="IgoraModel.FK_Staff_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="IgoraModel.ServicesInOrders" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IgoraModel.Equipment" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="IgoraModel.PurchaseOfEquipment" Width="1.5" PointX="7.5" PointY="0.875" />
+        <EntityTypeShape EntityType="IgoraModel.Equipment" Width="1.5" PointX="9.875" PointY="0.5" />
+        <EntityTypeShape EntityType="IgoraModel.PurchaseOfEquipment" Width="1.5" PointX="7.5" PointY="0.5" />
         <AssociationConnector Association="IgoraModel.FK_PurchaseOfEquipment_Equipment" />
         <AssociationConnector Association="IgoraModel.FK_Services_Equipment" />
         <AssociationConnector Association="IgoraModel.FK_PurchaseOfEquipment_Staff" />

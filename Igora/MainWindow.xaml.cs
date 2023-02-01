@@ -42,7 +42,7 @@ namespace Igora
 
             InitializeComponent();
             Manager.MainFrame = MainFrame;
-            Manager.MainFrame.Navigate(new ProfilePage());
+            Manager.MainFrame.Navigate(new ConsumableDataPage());
 
             //   Manager.MainFrame.Navigate(new ProfilePage(null));
 
