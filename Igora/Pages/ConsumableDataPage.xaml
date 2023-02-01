@@ -23,8 +23,8 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Оборудование" Width="200" Binding="{Binding Equipment.Name}"/>
                     <DataGridTextColumn Header="Всего" Width="55" Binding="{Binding Equipment.Qty}"/>
-                    <DataGridTextColumn Header="В наличии" Width="80" Binding="{Binding InStock, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="В прокате" Width="80" Binding="{Binding InProkat, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="В наличии" Width="80" Binding="{Binding InStockInt, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="В прокате" Width="80" Binding="{Binding OutStock, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="btnBack" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Назад" Click="btnBack_Click" Margin="5,0,0,0"/>

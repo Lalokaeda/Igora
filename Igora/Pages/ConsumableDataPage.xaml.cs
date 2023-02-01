@@ -39,7 +39,7 @@ namespace Igora.Pages
                     IgoraEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 }
                 catch { }
-                var consData = IgoraEntities.GetContext().Services.ToList();
+                var consData = IgoraEntities.GetContext().Services.Where(p=>p.Equipment!=null).ToList();
                 dgridConsData.ItemsSource = consData;
             }
           

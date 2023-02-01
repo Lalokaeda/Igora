@@ -56,7 +56,7 @@ namespace Igora
                     return null;
                 else
                 {
-                    _inStock = (Equipment.Qty - Orders.ToList().Where(p => p.StatusId != 3).Count());
+                    _inStock = (Equipment.Qty - Orders.Where(p => p.StatusId != 3).Count());
                     return _inStock;
                 }
             }

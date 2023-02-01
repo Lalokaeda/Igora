@@ -101,7 +101,7 @@ namespace Igora
                 {
                     Console.WriteLine(ex.Message);
                 }
-               // IgoraEntities.GetContext().Staffs.AddOrUpdate(tempEmp);
+                IgoraEntities.GetContext().Staffs.AddOrUpdate(tempEmp);
                 IgoraEntities.GetContext().EntryHistories.AddOrUpdate(tempEntryHistory);
                 IgoraEntities.GetContext().SaveChanges();
             }
