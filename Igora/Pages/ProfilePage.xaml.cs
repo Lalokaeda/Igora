@@ -100,5 +100,10 @@ namespace Igora.Pages
         {
             Manager.MainFrame.Navigate(new ConsumableDataPage());
         }
+
+        private void btnClientsList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

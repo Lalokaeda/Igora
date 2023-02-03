@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Igora" xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             StartupUri="LogInWindow.xaml">
+             StartupUri="AddClientWindow.xaml">
     <Application.Resources>
         
         <System:String x:Key="Company">Игора</System:String>
@@ -20,9 +20,35 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
         </Style>
 
-        <Style TargetType="DataGrid">
+        <Style TargetType="{x:Type DataGrid}" x:Key="DataGridSt">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FF498C51"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            
         </Style>
+
+        <!--<Style TargetType="DataGridRow" x:Key="styleForDGRow">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Gold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
 
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
@@ -226,6 +252,5 @@
             </Setter>
         </Style>
 
-       
     </Application.Resources>
 </Application>

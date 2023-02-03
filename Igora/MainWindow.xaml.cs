@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,8 +60,15 @@ namespace Igora
             {
                 while(sessionTimer.TimeToEnd.TotalMilliseconds>1)
                 {
-                    if (sessionTimer.TimeToEnd.TotalMilliseconds == 300000)
-                        MessageBox.Show("До конца сеанса осталось 5 минут!");
+                    if (sessionTimer.TimeToEnd.TotalSeconds == 300)
+                    {
+                        
+                        Task task = Task.Run(() => { MessageBox.Show("До конца сеанса осталось 5 минут!"); });
+                        Task.WaitAny(task);
+                        task.Start();
+
+                    }
+                    
                 }
             });
             logInWindow.Show();

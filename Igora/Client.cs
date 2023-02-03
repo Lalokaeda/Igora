@@ -30,7 +30,17 @@ namespace Igora
         public System.DateTime BirthDate { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        private string _password;
+        public string Password { 
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password= value;
+            }
+        }
         public string PhoneNum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -51,7 +61,7 @@ namespace Igora
         {
             Random random = new Random();
             List<Client> client = new List<Client>();
-            string _password;
+           // string _password;
             client = IgoraEntities.GetContext().Clients.ToList();
                 do
                 {

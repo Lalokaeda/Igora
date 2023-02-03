@@ -46,7 +46,7 @@
                 <RadioButton GroupName="rbStatus" Margin="2" BorderBrush="#FF76E383" Content="Закрыта" Checked="RadioButton_Checked"/>
             </StackPanel>
         </WrapPanel>
-        <DataGrid x:Name="dgridOrders" Grid.Row="2" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" RowDetailsVisibilityChanged="dgridOrders_RowDetailsVisibilityChanged" BorderBrush="#FF76E383">
+        <DataGrid x:Name="dgridOrders" Grid.Row="2" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" RowDetailsVisibilityChanged="dgridOrders_RowDetailsVisibilityChanged" BorderBrush="#FF76E383" Style="{StaticResource DataGridSt}">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>

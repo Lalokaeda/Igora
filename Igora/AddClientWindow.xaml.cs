@@ -26,10 +26,23 @@ namespace Igora
 
             InitializeComponent();
             if (selectedClient ==null)
+            { 
                 _currentClient = new Client();
             _currentClient.GeneratePassword();
             _currentClient.BirthDate= DateTime.Now;
             DataContext= _currentClient;
+            }
+        }
+
+        public AddClientWindow()
+        {
+
+            InitializeComponent();
+
+                _currentClient = new Client();
+                _currentClient.GeneratePassword();
+                _currentClient.BirthDate = DateTime.Now;
+                DataContext = _currentClient;
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)

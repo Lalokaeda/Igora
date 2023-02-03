@@ -56,7 +56,7 @@ namespace Igora
             }
 
             Captcha captcha = new Captcha();
-            if (_countEnties > 4)
+            if (_countEnties > 2)
             {
                 captcha.ShowDialog();
             }
@@ -116,6 +116,8 @@ namespace Igora
         private void AddEntryHistory(string login)
         {
             EntryHistory entryHistorystaff = null;
+            try
+            {
                 entryHistorystaff = new EntryHistory
                 {
                     EntryDate = DateTime.Now.ToLocalTime(),
@@ -123,7 +125,9 @@ namespace Igora
                     EntryType = false
 
                 };
-                if (entryHistorystaff.StaffId != 0)
+            }
+            catch { }
+                if (entryHistorystaff != null)
                 {
                     IgoraEntities.GetContext().EntryHistories.AddOrUpdate(entryHistorystaff);
                     try

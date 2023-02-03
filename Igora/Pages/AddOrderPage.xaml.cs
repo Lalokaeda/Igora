@@ -62,6 +62,7 @@ namespace Igora.Pages
            cbsServices.Add(cBService);
             cBService.DisplayMemberPath="Name";
             stackPanelServices.Children.Add(cBService);
+            btnAddService.Visibility=Visibility.Collapsed;
         }
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
@@ -96,7 +97,9 @@ namespace Igora.Pages
             StringBuilder errors = new StringBuilder();
             if(_currentOrder.Id == 0)
                 errors.AppendLine("Введите номер заказа");
-            if(_currentOrder.Services.Count==0)
+            if (IgoraEntities.GetContext().Orders.Any(p => p.Id == _currentOrder.Id))
+                errors.AppendLine("Заказ с таким номером уже существует!");
+            if (_currentOrder.Services.Count==0)
                 errors.AppendLine("Выберите услугу");
             if (_currentOrder.Client==null)
                 errors.AppendLine("Выберите клиента");
